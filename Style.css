@@ -1,0 +1,67 @@
+*{
+    background-color: rgb(50, 205, 146);
+}
+h1{
+    text-align: center;
+}
+.container{
+    border: 2px solid rgb(0, 0, 0);
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+#btn{
+    background-color:  #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+    font-size: larger;
+    width: 70px;
+    padding: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+#input1{
+    font-size: larger;
+    padding: 6px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+#taskList li{
+    display: flex;
+    border: 2px solid rgb(12, 184, 252);
+    background-color: rgb(12, 184, 252);
+    list-style-type: none;
+    text-align: left;
+    font-size: x-large;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+li input[type = "checkbox"]{
+    margin-right: 10px;
+}
+#editbtn{
+    background-color:  #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+    height: 34px;
+    font-size: 16px;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+#deletebtn{
+    background-color:  #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 34px;
+    font-size: 16px;
+    padding: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+}

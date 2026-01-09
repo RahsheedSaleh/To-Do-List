@@ -1,41 +1,69 @@
-btn.addEventListener("click", ()=>{
+let currentSpan = null;
+let currentLi = null;
+
+btn.addEventListener("click", () => {
     let list = document.querySelector("#taskList");
     let inputTask = document.querySelector("#input1");
     let task = inputTask.value;
-    let btn = document.querySelector("#btn");
-    let input = document.createElement("input");
-    input.type = "checkbox";
-    let edit = document.createElement("button");
-    edit.id = "editbtn";
-    edit.innerText = "Edit";
-    let delete1 = document.createElement("button");
-    delete1.id = "deletebtn";
-    delete1.innerText = "Delete";
 
     if(task === ""){
-    return alert("Please enter a task.");
+        alert("Please enter a task");
+        return;
     }
-    let li = document.createElement("li");
-    let spantag = document.createElement("span");
-    spantag.id = "span1";
-    spantag.textContent = task;
-    li.appendChild(input);
-    li.appendChild(spantag);
-    edit.onclick = function(){
-        let newText1 = prompt("Edit your task ");
 
-        if(newText1.trim() === ""){
-            return alert("Please enter a task");
-        }else{
-            spantag.textContent = newText1;
-        }
+    let li = document.createElement("li");
+
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+
+    let span = document.createElement("span");
+    span.textContent = task;
+
+    let editBtn = document.createElement("button");
+    editBtn.id = "editbtn";
+    editBtn.innerText = "Edit";
+
+    let deleteBtn = document.createElement("button");
+    deleteBtn.id = "deletebtn";
+    deleteBtn.innerText = "Delete";
+
+    editBtn.onclick = () => {
+        currentSpan = span;
+        document.getElementById("editInput").value = span.textContent;
+        document.getElementById("editModal").style.display = "flex";
     };
-    delete1.onclick = function(){
-        li.remove();
-    }
-    li.appendChild(edit);
-    li.appendChild(delete1);
+
+    deleteBtn.onclick = () => {
+        currentLi = li;
+        document.getElementById("deleteModal").style.display = "flex";
+    };
+
+    li.append(checkbox, span, editBtn, deleteBtn);
     list.appendChild(li);
     inputTask.value = "";
-
 });
+
+/* EDIT MODAL FUNCTIONS */
+document.getElementById("saveEdit").onclick = () => {
+    let newText = document.getElementById("editInput").value.trim();
+    if(newText === ""){
+        alert("Task cannot be empty");
+        return;
+    }
+    currentSpan.textContent = newText;
+    closeEditModal();
+};
+
+function closeEditModal(){
+    document.getElementById("editModal").style.display = "none";
+}
+
+/* DELETE MODAL FUNCTIONS */
+document.getElementById("confirmDelete").onclick = () => {
+    currentLi.remove();
+    closeDeleteModal();
+};
+
+function closeDeleteModal(){
+    document.getElementById("deleteModal").style.display = "none";
+}
